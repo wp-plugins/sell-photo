@@ -14,6 +14,8 @@ Sell images or photos on WordPress for free
 
 This plugin allows you to create a Buy button for each image of your WordPress photo gallery.
 
+https://www.youtube.com/watch?v=dOA58JET_xs&rel=0
+
 Once you have installed this plugin you need to go to the settings menu to configure some options (Settings -> Sell Photo).
 
 * PayPal Email: Your PayPal email address
