@@ -3,12 +3,12 @@ Contributors: naa986
 Donate link: http://noorsplugin.com/
 Tags: photo, photos, gallery, photo gallery, photogallery, image, images, photo album, photo albums, picture, pictures, album, photoalbum, image album, image gallery, paypal, photography, sell photos, selling, commerce, e-commerce, sell
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Sell images or photos on WordPress for free
+Sell images or photos from your WordPress site for free
 
 == Description ==
 
@@ -16,17 +16,7 @@ This plugin allows you to create a Buy button for each image of your WordPress p
 
 https://www.youtube.com/watch?v=dOA58JET_xs&rel=0
 
-Once you have installed this plugin you need to go to the settings menu to configure some options (Settings -> Sell Photo).
-
-* PayPal Email: Your PayPal email address
-* Currency Code: The default currency code
-* Price Amount: The default price of each gallery photo
-* Button Text/Image: The text/image for the Buy button
-* Return URL: The URL where a user will be redirected to after the payment
-
-Now add a new post/page and create a WordPress gallery by uploading images.
-
-The gallery shortcode will look similar to the following:
+When you insert a photo gallery the shortcode will look like the following:
 
 `[gallery link="file" ids="687,688,689,690,691,692"]`
 
