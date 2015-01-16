@@ -26,6 +26,11 @@ All you need to do is add a "sell_photo" parameter so the plugin can create a Bu
 
 For documentation please visit the [Sell Photo](http://noorsplugin.com/sell-photo/) plugin page
 
+= Recommended Reading =
+
+* Sell Photo [Documentation](http://noorsplugin.com/sell-photo/)
+* My Other [Free WordPress Plugins](http://noorsplugin.com/wordpress-plugins/)
+
 == Installation ==
 
 1. Go to the Add New plugins screen in your WordPress Dashboard
