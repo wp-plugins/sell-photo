@@ -2,9 +2,9 @@
 Contributors: naa986
 Donate link: http://noorsplugin.com/
 Tags: photo, photos, gallery, photo gallery, photogallery, image, images, photo album, photo albums, picture, pictures, album, photoalbum, image album, image gallery, paypal, photography, sell photos, selling, commerce, e-commerce, sell
-Requires at least: 3.0
+Requires at least: 4.2
 Tested up to: 4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,9 +12,21 @@ Sell images or photos from your WordPress site for free
 
 == Description ==
 
-This plugin allows you to create a Buy button for each image of your WordPress photo gallery.
+Sell Photo plugin allows you to create a Buy button for each image of your WordPress photo gallery. When a user clicks on the Buy Now button, they will be taken to the payment page where they can pay instantly using a credit card or their PayPal account.
 
 https://www.youtube.com/watch?v=dOA58JET_xs&rel=0
+
+= Features =
+
+* Sell your photos or images via PayPal
+* Compatible with the latest version of WordPress
+* Turn your WordPress photo gallery into a photo store
+* Upload photos or images in bulk using the media library
+* No need to create any product since each uploaded image acts like a product
+* No additional setup required (simply enter your PayPal Email in the settings and you are good to go)
+* Easiest and quickest way to sell your photos online
+* Choose which photo galleries will have the e-commerce functionality
+* Sell digital photos or photo prints 
 
 When you insert a photo gallery the shortcode will look like the following:
 
@@ -40,7 +52,7 @@ For documentation please visit the [Sell Photo](http://noorsplugin.com/sell-phot
 
 == Frequently Asked Questions ==
 
-= Can I sell photos on WordPress using this plugin? =
+= Can I sell photos in WordPress using this plugin? =
 
 Yes.
 
@@ -52,6 +64,9 @@ Yes.
 none
 
 == Changelog ==
+
+= 1.0.2 =
+* Introduced WP 4.2 gallery template (Updated the minimum requirement as well)  
 
 = 1.0.1 =
 * First commit

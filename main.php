@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Sell Photo
-Version: 1.0.1
+Version: 1.0.2
 Plugin URI: http://noorsplugin.com/sell-photo/
 Author: naa986
 Author URI: http://noorsplugin.com/
@@ -13,7 +13,7 @@ if(!class_exists('SELL_PHOTO'))
 {
     class SELL_PHOTO
     {
-        var $plugin_version = '1.0.1';
+        var $plugin_version = '1.0.2';
         var $plugin_url;
         var $plugin_path;
         function __construct()
@@ -33,7 +33,7 @@ if(!class_exists('SELL_PHOTO'))
                 add_filter('plugin_action_links', array(&$this,'add_plugin_action_links'), 10, 2 );
             }
             add_action('admin_menu', array( &$this, 'add_options_menu' ));
-            add_filter('post_gallery', 'sell_photo_gallery', 10, 2);
+            add_filter('post_gallery', 'sell_photo_gallery', 10, 3);
         }
         function loader_operations()
         {
@@ -214,29 +214,10 @@ if(!class_exists('SELL_PHOTO'))
     $GLOBALS['sell_photo'] = new SELL_PHOTO();
 }
 
-function sell_photo_gallery($output, $attr) 
+function sell_photo_gallery($output, $attr, $instance) 
 {
-    $post = get_post();
-
-	static $instance = 0;
-	$instance++;
-
-	if ( ! empty( $attr['ids'] ) ) {
-		// 'ids' is explicitly ordered, unless you specify otherwise.
-		if ( empty( $attr['orderby'] ) ) {
-			$attr['orderby'] = 'post__in';
-		}
-		$attr['include'] = $attr['ids'];
-	}
-
-	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-	if ( isset( $attr['orderby'] ) ) {
-		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-		if ( ! $attr['orderby'] ) {
-			unset( $attr['orderby'] );
-		}
-	}
-
+    	$post = get_post();
+        
 	$html5 = current_theme_supports( 'html5', 'gallery' );
 	$atts = shortcode_atts( array(
 		'order'      => 'ASC',
@@ -255,9 +236,6 @@ function sell_photo_gallery($output, $attr)
 	), $attr, 'gallery' );
 
 	$id = intval( $atts['id'] );
-	if ( 'RAND' == $atts['order'] ) {
-		$atts['orderby'] = 'none';
-	}
 
 	if ( ! empty( $atts['include'] ) ) {
 		$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
@@ -345,19 +323,21 @@ function sell_photo_gallery($output, $attr)
 	 *
 	 * @since 2.5.0
 	 *
-	 * @param string $gallery_style Default gallery shortcode CSS styles.
-	 * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
+	 * @param string $gallery_style Default CSS styles and opening HTML div container
+	 *                              for the gallery shortcode output.
 	 */
 	$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
 
 	$i = 0;
 	foreach ( $attachments as $id => $attachment ) {
+
+		$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
 		if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
+			$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
 		} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-			$image_output = wp_get_attachment_image( $id, $atts['size'], false );
+			$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
 		} else {
-			$image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
+			$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
 		}
 		$image_meta  = wp_get_attachment_metadata( $id );
 
@@ -372,7 +352,7 @@ function sell_photo_gallery($output, $attr)
 			</{$icontag}>";
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= "
-				<{$captiontag} class='wp-caption-text gallery-caption'>
+				<{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
 				" . wptexturize($attachment->post_excerpt) . "
 				</{$captiontag}>";
 		}
