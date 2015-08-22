@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Sell Photo
-Version: 1.0.2
+Version: 1.0.3
 Plugin URI: http://noorsplugin.com/sell-photo/
 Author: naa986
 Author URI: http://noorsplugin.com/
@@ -13,7 +13,7 @@ if(!class_exists('SELL_PHOTO'))
 {
     class SELL_PHOTO
     {
-        var $plugin_version = '1.0.2';
+        var $plugin_version = '1.0.3';
         var $plugin_url;
         var $plugin_path;
         function __construct()
